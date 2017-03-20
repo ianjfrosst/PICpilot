@@ -24,7 +24,7 @@
 #define IMU_PITCH_RATE   1
 #define IMU_ROLL_RATE    0
 
-extern IMU_data imu;
+extern IMUData imu;
 
 void initIMU() {
     VN100_initSPI();
@@ -51,11 +51,10 @@ void initIMU() {
     }
 }
 
-void readIMU() {
+void updateIMU() {
     float imuData[3];
     VN100_SPI_GetRates(0, (float*) &imuData);
 
-    //TODO: This is a reminder for me to figure out a more elegant way to fix improper derivative control (based on configuration of the sensor), adding this negative is a temporary fix. Some kind of calibration command or something.
     //DO NOT ADD NEGATIVES IN THE STATEMENTS BELOW. IT IS A GOOD WAY TO ROYALLY SCREW YOURSELF OVER LATER.
     //Outputs in order: Roll,Pitch,Yaw
     imu.rollRate = imuData[IMU_ROLL_RATE];

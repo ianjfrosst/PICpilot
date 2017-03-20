@@ -462,7 +462,7 @@ void imuCommunication(){
                                 IMU COMMUNICATION
      *****************************************************************************
      *****************************************************************************/
-    readIMU();
+    updateIMU();
 #if DEBUG && 0
     // Rate - Radians, Angle - Degrees
     char x[30];

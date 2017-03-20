@@ -45,6 +45,8 @@ static void buffRX() {
     if (SPI2STATbits.SPIRBF) { // if there's data in the RX buffer
         if (SPI2_wait_len > 0) { // if we're expecting data
             SPI2_RXBF[--SPI2_wait_len] = SPI2BUF;
+        } else {
+            ;
         }
     }
 }
@@ -183,7 +185,7 @@ void SPI_SS(uint8_t interface, pinState state) {
 byte SPI_TX_RX(uint8_t interface, byte data) {
     if (interface == 1) {
         SPI1BUF = data;
-        asm volatile("nop");
+        asm volatile("nop"); /* NOP is here to try to prevent us from entering the loop. */
         while (!SPI1STATbits.SPIRBF){}
         return SPI1BUF;
     } else if (interface == 2) {

@@ -8,7 +8,7 @@
 
 #include "IMU.h"
 
-IMU_data imu = {0,0,0,0,0,0};
+IMUData imu = {0,0,0,0,0,0};
 
 float getRoll(){
     return imu.roll;
