@@ -9,11 +9,16 @@
 #ifndef IMU_H
 #define	IMU_H
 
+#include "ProgramStatus.h"
+#include "main.h"
+
 #define VN100 0
 #define MPU9250 1
 #define MPU6050 2
 
 #define USE_IMU VN100
+
+#define IMU_SPI_PORT 2
 
 typedef struct IMUData {
     float roll, pitch, heading;
@@ -30,5 +35,16 @@ void initIMU(void);
  */
 void updateIMU(void);
 
-#endif
+void IMU_setOrientation(float*);
 
+void IMU_tare(void);
+
+
+float getRoll(void);
+float getPitch(void);
+float getYaw(void);
+float getRollRate(void);
+float getPitchRate(void);
+float getYawRate(void);
+
+#endif
