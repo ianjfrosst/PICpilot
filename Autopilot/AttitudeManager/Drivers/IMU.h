@@ -9,8 +9,8 @@
 #ifndef IMU_H
 #define	IMU_H
 
-#include "ProgramStatus.h"
-#include "main.h"
+#include "../ProgramStatus.h"
+#include "../main.h"
 
 #define VN100 0
 #define MPU9250 1

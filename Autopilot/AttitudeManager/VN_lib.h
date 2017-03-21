@@ -23,7 +23,7 @@
 #include "VN_math.h"
 #include "VN_user.h"
 
-#include "IMU.h"
+#include "Drivers/IMU.h"
 
 #ifdef _VN100
   #include "VN100.h"

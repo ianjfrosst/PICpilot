@@ -16,7 +16,7 @@
 #include "main.h"
 #include "../Common/Interfaces/SPI.h"
 #include "ProgramStatus.h"
-#include "IMU.h"
+#include "Drivers/IMU.h"
 
 extern PMData pmData;
 extern AMData amData;

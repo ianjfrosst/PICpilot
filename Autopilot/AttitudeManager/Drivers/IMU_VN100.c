@@ -13,7 +13,7 @@
  */
 
 #include "IMU.h"
-#include "VN100.h"
+#include "../VN100.h"
 #include <string.h>
 
 #if USE_IMU == VN100
