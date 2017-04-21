@@ -531,18 +531,6 @@ void readDatalink(void){
                 controlLevel = CMD_TO_INT(cmd->data);
                 forceGainUpdate();
                 break;
-            case SET_ANGULAR_WALK_VARIANCE:
-                setAngularWalkVariance(CMD_TO_FLOAT(cmd->data));
-                break;
-            case SET_GYRO_VARIANCE:
-                setGyroVariance(CMD_TO_FLOAT(cmd->data));
-                break;
-            case SET_MAGNETIC_VARIANCE:
-                setMagneticVariance(CMD_TO_FLOAT(cmd->data));
-                break;
-            case SET_ACCEL_VARIANCE:
-                setAccelVariance(CMD_TO_FLOAT(cmd->data));
-                break;
             case SET_SCALE_FACTOR:
                 scaleFactor = CMD_TO_FLOAT(cmd->data);
                 break;
