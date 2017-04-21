@@ -6,14 +6,15 @@
  */
 
 #include "StateMachine.h"
+#include "./Network/Datalink.h"
+#include "./AttitudeManager.h"
 #include "../Common/Utilities/Logger.h"
 #include "../Common/Common.h"
 #include "main.h"
+#include "../Common/Interfaces/InterchipDMA.h"
+#include "Drivers/Radio.h"
 #include "ProgramStatus.h"
-
-/*
- *
- */
+#include "../Common/Clock/Timer.h"
 
 //State Machine Triggers (Mostly Timers)
 static int dmaTimer = 0;
@@ -29,16 +30,14 @@ static char AMUpdate = 0;
 static char flightUpdate = 0;
 
 void StateMachine(char entryLocation){
-    //Timers
     dTime = (int)(getTime() - stateMachineTimer);
-    stateMachineTimer = getTime();
+    stateMachineTimer += dTime;
     uplinkTimer += dTime;
     downlinkP0Timer += dTime;
     downlinkP1Timer += dTime;
     downlinkP2Timer += dTime;
     imuTimer += dTime;
     dmaTimer += dTime;
-
 
     //Clear Watchdog timer
     asm("CLRWDT");
@@ -57,7 +56,7 @@ void StateMachine(char entryLocation){
 
         flightUpdate = 1;
     }
-    else if(isDMADataAvailable() && checkDMA()){
+    else if(newInterchipData() && checkDMA()){
         //Input from Controller
         flightUpdate = 1;
     }
@@ -105,8 +104,9 @@ void StateMachine(char entryLocation){
         //Then Sleep
     }
     //Loop it back again!
-    inboundBufferMaintenance();
-    outboundBufferMaintenance();
+    parseDatalinkBuffer(); //read any incoming data from the Xbee and put in buffer
+    sendQueuedDownlinkPacket(); //send any outgoing info
+    
     asm("CLRWDT");
 }
 

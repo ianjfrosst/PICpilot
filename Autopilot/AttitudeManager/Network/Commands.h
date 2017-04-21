@@ -1,4 +1,4 @@
-/* 
+/*
  * File:   commands.h
  * Author: andrew
  *
@@ -61,14 +61,15 @@
 #define ARM_VEHICLE 50
 #define DEARM_VEHICLE 51
 #define SET_FLAP 52
-#define SET_FLAP_KD_GAIN 53
-#define SET_FLAP_KP_GAIN 54
-#define SET_FLAP_KI_GAIN 55
+#define UNUSED_53 53
+#define UNUSED_54 54
+#define UNUSED_55 55
 #define UNUSED_56 56
 #define UNUSED_57 57
 #define FOLLOW_PATH 58
 #define EXIT_HOLD_ORBIT 59
 #define SHOW_SCALED_PWM 60
+#define REMOVE_LIMITS 61
 
 //Multipart Commands
 #define NEW_WAYPOINT 128
@@ -82,7 +83,16 @@
 #define UPDATE_WAYPOINT 136
 #define SET_GAINS 137
 
+/**
+ * Converts command data into the specified type. Saves on typing. Make sure the data is byte aligned before
+ * calling this or you'll get an OPCODE reset. ie. you cant cast a 3 byte array
+ * into a 2 byte int if the starting index is 1
+ */
+#define CMD_TO_INT(data) (*((int*)data))
+#define CMD_TO_FLOAT(data) (*((float*)data))
+#define CMD_TO_FLOAT_ARRAY(data) ((float*)data)
+#define CMD_TO_TYPE(data, type) (*((type*)data))
+
 //Multipart Command Structs
 
 #endif	/* COMMANDS_H */
-

@@ -118,7 +118,7 @@ VN100_SPI_Packet* VN100_SPI_WriteRegister(unsigned char sensorID, unsigned char 
 
   /* Delay for 50us */
   VN_Delay(100);
-  
+
   /* Pull SS line low to start SPI transaction */
   VN_SPI_SetSS(sensorID, VN_PIN_LOW);
 

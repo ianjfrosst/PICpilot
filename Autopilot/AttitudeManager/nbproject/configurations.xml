@@ -8,10 +8,14 @@
         <itemPath>AttitudeManager.h</itemPath>
         <itemPath>OrientationControl.h</itemPath>
         <itemPath>StateMachine.h</itemPath>
+        <itemPath>PID.h</itemPath>
+      </logicalFolder>
+      <logicalFolder name="f10" displayName="Clock" projectFiles="true">
+        <itemPath>../Common/Clock/Clock.h</itemPath>
+        <itemPath>../Common/Clock/Timer.h</itemPath>
       </logicalFolder>
       <logicalFolder name="f6" displayName="Common" projectFiles="true">
         <itemPath>../Common/Common.h</itemPath>
-        <itemPath>../Common/clock.h</itemPath>
       </logicalFolder>
       <logicalFolder name="f1" displayName="Debugging" projectFiles="true">
         <itemPath>StartupErrorCodes.h</itemPath>
@@ -24,13 +28,15 @@
       </logicalFolder>
       <logicalFolder name="f8" displayName="Interfaces" projectFiles="true">
         <itemPath>../Common/Interfaces/UART.h</itemPath>
-        <itemPath>../Common/Interfaces/I2C.h</itemPath>
         <itemPath>../Common/Interfaces/SPI.h</itemPath>
+        <itemPath>../Common/Interfaces/InterchipDMA.h</itemPath>
       </logicalFolder>
       <logicalFolder name="f3" displayName="Network" projectFiles="true">
-        <itemPath>commands.h</itemPath>
-        <itemPath>net.h</itemPath>
-        <itemPath>UART2.h</itemPath>
+        <itemPath>Network/Datalink.h</itemPath>
+        <itemPath>Network/Commands.h</itemPath>
+      </logicalFolder>
+      <logicalFolder name="f2" displayName="Peripherals" projectFiles="true">
+        <itemPath>Peripherals/UHF.h</itemPath>
       </logicalFolder>
       <logicalFolder name="f4" displayName="PWM Management" projectFiles="true">
         <itemPath>OutputCompare.h</itemPath>
@@ -40,10 +46,8 @@
       <logicalFolder name="f5" displayName="Utilities" projectFiles="true">
         <itemPath>delay.h</itemPath>
         <itemPath>fmath.h</itemPath>
-        <itemPath>timer.h</itemPath>
         <itemPath>../Common/Utilities/ByteQueue.h</itemPath>
         <itemPath>../Common/Utilities/Logger.h</itemPath>
-        <itemPath>../Common/Utilities/InterchipDMA.h</itemPath>
       </logicalFolder>
       <logicalFolder name="f7" displayName="VectorNav" projectFiles="true">
         <itemPath>VN100.h</itemPath>
@@ -69,10 +73,14 @@
         <itemPath>AttitudeManager.c</itemPath>
         <itemPath>OrientationControl.c</itemPath>
         <itemPath>StateMachine.c</itemPath>
+        <itemPath>PID.c</itemPath>
+      </logicalFolder>
+      <logicalFolder name="f9" displayName="Clock" projectFiles="true">
+        <itemPath>../Common/Clock/Clock.c</itemPath>
+        <itemPath>../Common/Clock/Timer.c</itemPath>
       </logicalFolder>
       <logicalFolder name="f7" displayName="Common" projectFiles="true">
         <itemPath>../Common/Common.c</itemPath>
-        <itemPath>../Common/clock.c</itemPath>
       </logicalFolder>
       <logicalFolder name="f1" displayName="Debugging" projectFiles="true">
         <itemPath>StartupErrorCodes.c</itemPath>
@@ -86,14 +94,14 @@
       </logicalFolder>
       <logicalFolder name="f8" displayName="Interfaces" projectFiles="true">
         <itemPath>../Common/Interfaces/UART.c</itemPath>
-        <itemPath>../Common/Interfaces/I2C.c</itemPath>
         <itemPath>../Common/Interfaces/SPI.c</itemPath>
+        <itemPath>../Common/Interfaces/InterchipDMA.c</itemPath>
       </logicalFolder>
       <logicalFolder name="f3" displayName="Network" projectFiles="true">
-        <itemPath>net_outbound.c</itemPath>
-        <itemPath>net_inbound.c</itemPath>
-        <itemPath>net_common.c</itemPath>
-        <itemPath>UART2.c</itemPath>
+        <itemPath>Network/Datalink.c</itemPath>
+      </logicalFolder>
+      <logicalFolder name="f2" displayName="Peripherals" projectFiles="true">
+        <itemPath>Peripherals/UHF.c</itemPath>
       </logicalFolder>
       <logicalFolder name="f4" displayName="PWM Management" projectFiles="true">
         <itemPath>InputCapture.c</itemPath>
@@ -103,10 +111,8 @@
       <logicalFolder name="f5" displayName="Utilities" projectFiles="true">
         <itemPath>fmath.c</itemPath>
         <itemPath>delay.c</itemPath>
-        <itemPath>timer.c</itemPath>
         <itemPath>../Common/Utilities/ByteQueue.c</itemPath>
         <itemPath>../Common/Utilities/Logger.c</itemPath>
-        <itemPath>../Common/Utilities/InterchipDMA.c</itemPath>
       </logicalFolder>
       <logicalFolder name="f6" displayName="VectorNav" projectFiles="true">
         <itemPath>VN100.c</itemPath>
@@ -127,15 +133,16 @@
     </logicalFolder>
   </logicalFolder>
   <sourceRootList>
-    <Elem>../PathManager</Elem>
-    <Elem>.</Elem>
-    <Elem>../Common</Elem>
-    <Elem>Interfaces</Elem>
-    <Elem>Utilities</Elem>
     <Elem>../Common/Utilities</Elem>
     <Elem>../Common/Interfaces</Elem>
     <Elem>Drivers</Elem>
+    <Elem>../PathManager</Elem>
+    <Elem>Interfaces</Elem>
+    <Elem>Utilities</Elem>
     <Elem>test/test</Elem>
+    <Elem>Network</Elem>
+    <Elem>Peripherals</Elem>
+    <Elem>../Common/Clock</Elem>
   </sourceRootList>
   <projectmakefile>Makefile</projectmakefile>
   <confs>
@@ -145,10 +152,10 @@
         <targetDevice>dsPIC33FJ256GP710A</targetDevice>
         <targetHeader></targetHeader>
         <targetPluginBoard></targetPluginBoard>
-        <platformTool>Simulator</platformTool>
+        <platformTool>ICD3PlatformTool</platformTool>
         <languageToolchain>XC16</languageToolchain>
-        <languageToolchainVersion>1.31</languageToolchainVersion>
-        <platform>3</platform>
+        <languageToolchainVersion>1.26</languageToolchainVersion>
+        <platform>2</platform>
       </toolsSet>
       <compileType>
         <linkerTool>
